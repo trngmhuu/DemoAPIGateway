@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@AutoConfiguration
 public class DemoGatewayApplication {
 
 	public static void main(String[] args) {

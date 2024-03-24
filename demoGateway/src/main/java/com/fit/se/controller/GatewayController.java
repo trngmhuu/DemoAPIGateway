@@ -38,7 +38,7 @@ public class GatewayController {
         return restTemplate.getForObject(apiUrl, Object.class);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/departments/{id}")
     public Object updateObjectDepartmentById(@PathVariable("id") int departmentId) {
         String apiUrl = "http://localhost:8080/departments/" + Integer.toString(departmentId);
         return restTemplate.getForObject(apiUrl, Object.class);
@@ -69,7 +69,7 @@ public class GatewayController {
         return restTemplate.getForObject(apiUrl, Object.class);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("users/{id}")
     public Object updateObjectUserById(@PathVariable("id") int userId) {
         String apiUrl = "http://localhost:8080/users/" + Integer.toString(userId);
         return restTemplate.getForObject(apiUrl, Object.class);
