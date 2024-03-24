@@ -1,17 +1,19 @@
 package com.fit.se.service;
 
 import com.fit.se.entity.Department;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface DepartmentService {
 
-    public Department saveDepartment(Department department);
+    Department saveDepartment(Department department);
 
-    public List<Department> getListDepartments();
+    Department getDepartmentById(int departmentId);
 
-    public Department getDepartmentById(int departmentId);
+    List<Department> getAllDepartments();
+
+    Department updateDepartmentById(int departmentId, Department newDepartment);
+
+    void deleteDepartmentById(int departmentId);
 
 }

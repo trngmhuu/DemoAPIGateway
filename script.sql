@@ -1,6 +1,6 @@
 CREATE DATABASE DemoRestTemplate
 USE DemoRestTemplate
 
-SELECT * FROM department
+SELECT * FROM departments
 SELECT * FROM users
 SELECT * FROM employee

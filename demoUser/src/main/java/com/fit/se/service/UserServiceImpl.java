@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -45,12 +46,51 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public void deleteUserById(int userId) {
+        userRepository.deleteById(userId);
+    }
+
+    @Override
+    public User updateUserById(int userId, User newUser) {
+        User tempUser = userRepository.findById(userId).get();
+        // Update firstName
+        if (
+                Objects.nonNull(newUser.getFirstName()) &&
+                        !"".equalsIgnoreCase(newUser.getFirstName())
+        )
+        {
+            tempUser.setFirstName(newUser.getFirstName());
+        }
+
+        // Update lastName
+        if (
+                Objects.nonNull(newUser.getLastName()) &&
+                        !"".equalsIgnoreCase(newUser.getLastName())
+        )
+        {
+            tempUser.setLastName(newUser.getLastName());
+        }
+
+        // Update email
+        if (
+                Objects.nonNull(newUser.getEmail()) &&
+                        !"".equalsIgnoreCase(newUser.getEmail())
+        )
+        {
+            tempUser.setEmail(newUser.getEmail());
+        }
+
+        // Update departmentId
+        tempUser.setDepartmentId(newUser.getDepartmentId());
+        return userRepository.save(tempUser);
+    }
+
     private UserDto mapToUser(User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
-        userDto.setEmail(user.getEmail());
         return userDto;
     }
 }
